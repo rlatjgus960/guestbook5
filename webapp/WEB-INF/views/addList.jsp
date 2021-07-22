@@ -39,7 +39,7 @@
 			<tr>
 				<td>${guestbookList.no}</td>
 				<td>${guestbookList.name}</td>
-				<td>${guestbookList.password}</td>
+				<td>${guestbookList.regDate}</td>
 				<td><a href="/guestbook3/deleteForm?no=${guestbookList.no}">삭제</a></td>
 			</tr>
 			<tr>

@@ -11,7 +11,7 @@
 <body>
 
 	<form action="/guestbook3/delete" method="post">
-		<input type="text" name="no" value="${param.no }"> 비밀번호<input
+		<input type="hidden" name="no" value="${param.no }"> 비밀번호<input
 			type="password" name="password" value="">
 		<button type="submit">확인</button>
 	</form>
