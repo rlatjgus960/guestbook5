@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,14 +16,14 @@ import com.javaex.vo.GuestbookVo;
 @Controller
 public class GuestController {
 	
+	//필드
+	@Autowired
+	private GuestbookDao guestbookDao;
 	
 	//리스트
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(Model model) {
-		System.out.println("[PhoneController.list]");
-		
-		//Dao 사용
-		GuestbookDao guestbookDao = new GuestbookDao();
+		System.out.println("[GuestController.list]");
 		
 		//Dao의 메소드로 데이터 가져오기
 		List<GuestbookVo> guestbookList = guestbookDao.getGuestbookList();
@@ -41,8 +42,6 @@ public class GuestController {
 		System.out.println("[GuestController.add]");
 		
 		System.out.println(guestbookVo);
-		
-		GuestbookDao guestbookDao = new GuestbookDao();
 		
 		guestbookDao.guestbookInsert(guestbookVo);
 		
@@ -63,7 +62,6 @@ public class GuestController {
 	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("[GuestController.delete]");
 		
-		GuestbookDao guestbookDao = new GuestbookDao();
 		guestbookDao.guestbookDelete(guestbookVo);
 		
 		return "redirect:/list";
