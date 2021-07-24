@@ -27,7 +27,6 @@ public class GuestController {
 		
 		//Dao의 메소드로 데이터 가져오기
 		List<GuestbookVo> guestbookList = guestbookDao.getGuestbookList();
-		System.out.println(guestbookList);
 		
 		//model 담기
 		model.addAttribute("guestbookList", guestbookList);
@@ -41,7 +40,6 @@ public class GuestController {
 	public String add(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("[GuestController.add]");
 		
-		System.out.println(guestbookVo);
 		
 		guestbookDao.guestbookInsert(guestbookVo);
 		
