@@ -31,7 +31,7 @@ public class GuestController {
 		//model 담기
 		model.addAttribute("guestbookList", guestbookList);
 		
-		return "/WEB-INF/views/addList.jsp";
+		return "addList";
 	}
 	
 	
@@ -46,14 +46,28 @@ public class GuestController {
 		return "redirect:/list";
 	}
 	
+	//등록2
+	@RequestMapping(value = "/add2", method = { RequestMethod.GET, RequestMethod.POST })
+	public String add2(@RequestParam("name") String name,
+					   @RequestParam("password") String password,
+					   @RequestParam("content") String content 
+					   ) {
+		System.out.println("[GuestController.add2]");
+		
+		guestbookDao.guestbookInsert2(name, password, content);
+		
+		return "redirect:/list";
+	}
+	
 	
 	//삭제폼
 	@RequestMapping(value = "/deleteForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleteForm() {
 		System.out.println("[GuestController.deleteForm]");
 		
-		return "/WEB-INF/views/deleteForm.jsp";
+		return "deleteForm";
 	}
+	
 	
 	//삭제
 	@RequestMapping(value="/delete", method = { RequestMethod.GET, RequestMethod.POST })
